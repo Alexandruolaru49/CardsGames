@@ -1,3 +1,6 @@
+Proiect - Cards Games - Data Structures - LISTS
+
+
 -Functia CreateList aloca memorie pentru un nod de lista pe care il primeste ca parametru, si seteaza toate campurile cu 0 si respectiv NULL;
 
 -Functia InitializarePachet are rolul de a aloca dinamic memorie pentru 52 de noduri diferite reprezentand fiecare cate o carte din pachetul de joc .
