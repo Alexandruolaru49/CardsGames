@@ -1,0 +1,37 @@
+-Functia CreateList aloca memorie pentru un nod de lista pe care il primeste ca parametru, si seteaza toate campurile cu 0 si respectiv NULL;
+
+-Functia InitializarePachet are rolul de a aloca dinamic memorie pentru 52 de noduri diferite reprezentand fiecare cate o carte din pachetul de joc .
+ Le initializez campurile : "carte" (numar+simbol) , "valoare" (din tabelul de valori) si le-am legat intre ele prin linkul "next".
+
+-Functia Inversare primeste ca parametru un pointer catre lista pe care dorim sa o modificam si o inverseaza.
+
+-Functia N_Piles primeste ca parametri pointerul la lista , numarul de subpachete si ordinea dorita in care vrem sa fie asezate subpachetele.
+ M-am folosit de un vectori de pointeri catre o astfel de lista, pe care i-am initializat cu inceputul fiecarui subpachet. Dupa aceea, am unit in ordinea ceruta subpachetele si am intors lista finala.
+
+ -Functia Intercalare primeste ca parametru un pointer catre lista pe care dorim sa o modificam si o intercaleaza.
+
+ -Functia Amestecare_Mongean primeste ca parametru un pointer catre o lista si returneaza lista modificata,reprezentand pachetul amestecat. Ea creeaza o lista si o aloca dinamic.Folosind functiile de adaugare nod la finalul si la inceputul unei liste , se creeaza pachetul nou , amestecat.
+
+ -Functia Razboi primeste ca parametru un pointer catre lista initiala (pachetul de joc) si unul la fisierul in care dorim sa afisam rezultatul jocului.
+  Am impartit pachetul de joc in doua : p1 pointeaza catre inceputul listei , ce se termina la mijloc, de unde incepe al doilea pachet , spre care pointeaza p2.(p1 si p2 reprezinta pachetul jucatorului 1 si 2)
+  Cat timp cei doi jucatori mai au carti in mana si nu s-au jucat mai mult de 100 de maini (m-am folosit de functia Nr_carti_jucator care intoarce nr. de noduri dintr-o lista) se intampla urmatoarele:
+  A cui carte este mai mare , acelui jucator li se adauga cartile la final .
+  Daca cartile sunt la fel(au acelasi nr), se declara razboi si se intorc un numar de carti dat de formula din enunt.
+  Am creat doua liste suplimentare in care am pastrat cartile intoarse de cei doi jucatori in urma razboiului pentru a le adauga mai usor in pachetul celui castigator la final.
+  In functie de cine a ramas primul fara carti sau de cine are cele mai multe C carti la final, am scris castigatorul in fisierul out.
+
+-Functia Rolling_Stone primeste ca parametru un pointer catre lista initiala (pachetul de joc) si unul la fisierul in care dorim sa afisam rezultatul jocului.
+ Am folosit si aici un vector de pointeri catre o lista care reprezinta pachetele celor 4 jucatori
+ Am mai creat si o lista circulara care tine ordinea simbolurilor "s->h->c->d->s->h->c->d..."
+ Functiile de adaugare la final si de stergere au rolul de a adauga si de a sterge un nod in lista primita ca parametru.
+ Functia isCarte primeste ca parametru o lista si intoarce un pointer catre primul nod din lista care are in campul carte pe pozitia 1 caracterul c primit si el ca parametru, sau NULL daca nu exista .
+ Table este masa de joc, pe care am alocat-o dinamic, si pe care vom pune cartile jucatorilor, si este si locul de unde vom adauga cartile inapoi in pachetele acestora.
+ Jocul se termina atunci cand unul dintre jucatori ramane fara carti in mana, castigand.
+
+ -Functia Scarabeii_Egipteni primeste ca parametru un pointer catre lista initiala (pachetul de joc) si unul la fisierul in care dorim sa afisam rezultatul jocului.
+  Aici am creat o lista circulara dublu inlantuita , avand 4 noduri , reprezentand cei 4 jucatori , fiecare avand urmatoarele campuri: un intreg in care e salvat un numar de la 1 la 4 ,insemnand numarul jucatorului, un pointer la o lista simplu inlantuita (adica pachetul sau cu carti) si doua linkuri , next si prev;
+  Functia CarteCurenta are scopul de a pastra cartea care tocmai a fost data de jucatorul curent pentru viitoare comparatii.
+  Dupa ce am atribuit fiecarei celule din lista circulara dublu inlantuita (fiecarui jucator) pachetul sau, am inceput jocul propriu-zis.
+  Am utilizat , la fel ca la sarcinile anterioare, si o masa de joc (table) care este tot o lista simplu inlantuita pe care am alocat-o dinamic.
+  Cat timp niciun nu a luat toate cele 52 de carti, se da cate o carte jos, tinandu se cont de regulile jocului.
+  In momentul in care s-a gasit un castigator, se iese din ciclu si se afiseaza in fisier numarul jucatorului care a castigat.
